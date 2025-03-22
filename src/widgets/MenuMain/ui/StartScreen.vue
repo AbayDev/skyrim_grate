@@ -5,17 +5,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { MenuNavigation, type MenuNavigationItem } from '@/shared/ui'
+import { MenuNavigation } from '@/shared/ui'
+import { useStartScreen } from '../composables/useStartScreen'
+import { onMounted } from 'vue'
 
-const menuItems = ref<MenuNavigationItem[]>([
-  { name: 'Продолжить' },
-  { name: 'Новая игра' },
-  { name: 'Загрузить' },
-  { name: 'Настройки' },
-  { name: 'Моды' },
-  { name: 'Выход' },
-])
+const { menuItems, audioService } = useStartScreen()
+
+onMounted(() => {
+  audioService.value.start()
+})
 </script>
 
 <style src="../styles/index.scss"></style>

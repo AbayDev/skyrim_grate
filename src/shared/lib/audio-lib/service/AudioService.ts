@@ -1,15 +1,28 @@
-export class AudioService {
-  private audio: HTMLAudioElement
+import { useSettings } from '@/shared/settings'
 
-  constructor(audioName: string) {
-    this.audio = new Audio(`./audios/${audioName}.mp3`)
+export class AudioService {
+  public audio?: HTMLAudioElement
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private audioPromise?: Promise<any>
+
+  public async setAudioName(audioName: string) {
+    const { settings } = useSettings()
+    this.audioPromise = import(`../audios/${audioName}.mp3`)
+    const audio = await this.audioPromise
+    this.audio = new Audio(audio?.default)
+    this.audio.volume = settings.value.audio.volume
   }
 
-  public start() {
+  public async start() {
+    await this.audioPromise
+    if (!this.audio) return
     this.audio.play()
   }
 
   public stop() {
-    this.audio.pause()
+    if (!this.audio) return
+    this.audio?.pause()
+    this.audio.currentTime = 0
   }
 }
