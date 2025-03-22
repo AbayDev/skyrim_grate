@@ -1,0 +1,27 @@
+.menu-navigation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  z-index: 1;
+
+  &__item {
+    padding: 10px 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-bottom: 2px solid white;
+      color: #ccc;
+      transform: scale(1.1);
+    }
+  }
+}
