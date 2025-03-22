@@ -1,0 +1,17 @@
+.start-screen {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('/public/assets/images/main-menu.jpg') no-repeat center center;
+  background-size: cover;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    opacity: 0.5;
+  }
+}

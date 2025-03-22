@@ -1,0 +1,11 @@
+@use './normalize.scss';
+@use './fonts.scss';
+
+body {
+  cursor: url("/public/assets/images/skyrim-normal.cur"), default !important;
+  font-family: "Futura PT", sans-serif;
+
+  * {
+    cursor: url("/public/assets/images/skyrim-normal.cur"), default !important;
+  }
+}
