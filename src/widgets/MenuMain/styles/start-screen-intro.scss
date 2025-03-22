@@ -1,0 +1,73 @@
+.start-screen-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 1);
+  z-index: 2;
+  user-select: none;
+
+  &_hidden {
+    animation: startSreenFadeOut 8s ease-in-out forwards;
+    pointer-events: none;
+  }
+
+  &_hidden &__text {
+    animation: startScreenTextFadeOut 3s ease-in-out forwards;
+  }
+
+  &__text {
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    filter: blur(10px);
+    animation: startScreenTextFadeIn 4s ease-in-out forwards;
+  }
+}
+
+@keyframes startScreenTextFadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes startScreenTextFadeOut {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+@keyframes startSreenFadeOut {
+  0% {
+    opacity: 1;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 1);
+  }
+
+  50% {
+    backdrop-filter: blur(8px);
+  }
+
+  100% {
+    opacity: 0;
+    backdrop-filter: blur(0);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}

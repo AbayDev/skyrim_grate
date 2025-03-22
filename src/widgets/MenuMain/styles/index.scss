@@ -6,6 +6,7 @@
   min-height: 100vh;
   background: url('/public/assets/images/main-menu.jpg') no-repeat center center;
   background-size: cover;
+  user-select: none;
 
   &::after {
     content: '';
