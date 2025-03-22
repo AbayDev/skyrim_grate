@@ -11,12 +11,14 @@ import { MenuNavigation } from '@/shared/ui'
 import { useStartScreen } from '../composables/useStartScreen'
 import StartScreenIntro from './StartScreenIntro.vue'
 
-const isIntroVisible = ref(true)
+const isIntroVisibleStorage = sessionStorage.getItem('isIntroVisible')
+const isIntroVisible = ref(!isIntroVisibleStorage ? true : false)
 
 const { menuItems, audioService } = useStartScreen()
 
 const onIntroAnimationEnd = () => {
   isIntroVisible.value = false
+  sessionStorage.setItem('isIntroVisible', '0')
 }
 
 onMounted(() => {
